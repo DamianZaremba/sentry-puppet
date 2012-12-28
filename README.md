@@ -16,11 +16,12 @@ Usage
 4. cp /etc/puppet/<environment>/modules/sentry/sentry.yaml /etc/puppet/<environment>/
 5. Update sentry.yaml with your dsn
 6. Enable pluginsync and reports
+
     [master]
     report = true
     reports = store,sentry
     pluginsync = true
-
+    
     [agent]
     report = true
     pluginsync = true
