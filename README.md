@@ -17,14 +17,14 @@ Usage
 5. Update sentry.yaml with your dsn
 6. Enable pluginsync and reports
 
-    [master]
-    report = true
-    reports = store,sentry
-    pluginsync = true
-    
-    [agent]
-    report = true
-    pluginsync = true
+        [master]
+        report = true
+        reports = store,sentry
+        pluginsync = true
+        
+        [agent]
+        report = true
+        pluginsync = true
 
 7. Do a puppet run
 
