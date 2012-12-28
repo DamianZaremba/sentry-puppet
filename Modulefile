@@ -1,4 +1,4 @@
-name 'sentry-puppet'
+name 'damianzaremba-sentry-puppet'
 version '0.0.1'
 license 'GPL v3'
 summary 'Send failed puppet runs to Sentry'
