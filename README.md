@@ -10,10 +10,10 @@ Dependencies
 
 Usage
 -----
-1. yum install rubygems
-2. gem install sentry-raven
-3. git clone https://github.com/DamianZaremba/sentry-puppet.git /etc/puppet/<environment>/modules/sentry/
-4. cp /etc/puppet/<environment>/modules/sentry/sentry.yaml /etc/puppet/<environment>/
+1. `yum install rubygems`
+2. `gem install sentry-raven`
+3. `git clone https://github.com/DamianZaremba/sentry-puppet.git /etc/puppet/<environment>/modules/sentry/`
+4. `cp /etc/puppet/<environment>/modules/sentry/sentry.yaml /etc/puppet/<environment>/`
 5. Update sentry.yaml with your dsn
 6. Enable pluginsync and reports
 
@@ -25,6 +25,7 @@ Usage
     [agent]
     report = true
     pluginsync = true
+
 7. Do a puppet run
 
 License
