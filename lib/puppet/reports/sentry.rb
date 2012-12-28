@@ -18,8 +18,7 @@ Puppet::Reports.register_report(:sentry) do
     desc = 'Puppet reporter designed to send failed runs to a sentry server'
 
     # Load the config else error
-#    config_path = File.join([File.dirname(Puppet.settings[:config]), "sentry.yaml"])
-config_path = '/etc/puppet/sentry.yaml'
+    config_path = File.join([File.dirname(Puppet.settings[:config]), "sentry.yaml"])
 
     unless File.exist?(config_path)
         raise(Puppet::ParseError, "Sentry config " + config_path + " doesn't exist")
