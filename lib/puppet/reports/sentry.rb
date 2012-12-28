@@ -53,17 +53,7 @@ Puppet::Reports.register_report(:sentry) do
         # Get the important looking stuff to sentry
         self.logs.each do |log|
             if log.level.to_s == 'err'
-               options = {
-                    'level' => log.level,
-                    'abs_path' => log.file,
-                    'lineno' => log.line,
-                    'tags' => log.tags,
-                }
-                # This doesn't work, why? :(
-                #Raven.captureMessage(log.message, options)
-
-                msg = log.message + " at " + log.file + ":" + log.line.to_s
-                Raven.captureMessage(msg)
+                Raven.captureMessage(log.message + " at " + log.file + ":" + log.line.to_s)
             end
         end
     end
