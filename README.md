@@ -21,12 +21,16 @@ Usage
         report = true
         reports = store,sentry
         pluginsync = true
-        
+
         [agent]
         report = true
         pluginsync = true
 
 7. Do a puppet run
+
+Screenshot
+---------
+![](https://github.com/davewongillies/sentry-puppet/blob/master/screenshot.png?raw=true)
 
 License
 -------

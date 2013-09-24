@@ -10,7 +10,7 @@ end
 begin
     require 'raven'
 rescue LoadError => e
-    Puppet.err "You need the `raven-sentry` gem to send reports to Sentry"
+    Puppet.err "You need the `raven-sentry` gem installed on the puppetmaster to send reports to Sentry"
 end
 
 Puppet::Reports.register_report(:sentry) do
@@ -44,6 +44,21 @@ Puppet::Reports.register_report(:sentry) do
              @environment = 'production'
          end
 
+         if self.respond_to?(:host)
+             @host = self.host
+         end
+
+         if self.respond_to?(:kind)
+             @kind = self.kind
+         end
+         if self.respond_to?(:puppet_version)
+           @puppet_version = self.puppet_version
+         end
+
+         if self.respond_to?(:status)
+           @status = self.status
+         end
+
         # Configure raven
         Raven.configure do |config|
             config.dsn = CONFIG[:sentry_dsn]
@@ -53,7 +68,18 @@ Puppet::Reports.register_report(:sentry) do
         # Get the important looking stuff to sentry
         self.logs.each do |log|
             if log.level.to_s == 'err'
-                Raven.captureMessage(log.message + " at " + log.file + ":" + log.line.to_s)
+                Raven.captureMessage(log.message + " at " + log.file + ":" + log.line.to_s, {
+                  :server_name => @host,
+                  :extra => {
+                    'environment' => @environment,
+                    'kind' => @kind,
+                    'source' => log.source,
+                    'version' => @puppet_version,
+                    'line' => log.line.to_s,
+                    'file' => log.file,
+                    'status' => @status,
+                  },
+                })
             end
         end
     end
