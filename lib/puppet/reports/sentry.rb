@@ -70,14 +70,16 @@ Puppet::Reports.register_report(:sentry) do
             if log.level.to_s == 'err'
                 Raven.captureMessage(log.message + " at " + log.file + ":" + log.line.to_s, {
                   :server_name => @host,
-                  :extra => {
+                  :tags => {
                     'environment' => @environment,
-                    'kind' => @kind,
+                    'status'      => @status,
+                    'version'     => @puppet_version,
+                    'kind'        => @kind,
+                  },
+                  :extra => {
                     'source' => log.source,
-                    'version' => @puppet_version,
-                    'line' => log.line.to_s,
-                    'file' => log.file,
-                    'status' => @status,
+                    'line'   => log.line.to_s,
+                    'file'   => log.file,
                   },
                 })
             end
