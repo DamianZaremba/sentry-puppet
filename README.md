@@ -30,7 +30,7 @@ Usage
 
 Screenshot
 ---------
-![](https://github.com/davewongillies/sentry-puppet/blob/master/screenshot.png?raw=true)
+![](https://github.com/DamianZaremba/sentry-puppet/raw/master/screenshot.png)
 
 License
 -------
