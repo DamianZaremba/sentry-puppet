@@ -14,8 +14,11 @@ Usage
 2. `gem install sentry-raven`
 3. `git clone https://github.com/DamianZaremba/sentry-puppet.git /etc/puppet/<environment>/modules/sentry/`
 4. `cp /etc/puppet/<environment>/modules/sentry/sentry.yaml /etc/puppet/<environment>/`
-5. Update sentry.yaml with your dsn
-6. Enable pluginsync and reports
+5. Add required configuration to Hiera:
+
+        {"sentry": {"dsn": "SENTRY_DSN"}}
+
+6. Enable pluginsync and reports:
 
         [master]
         report = true
